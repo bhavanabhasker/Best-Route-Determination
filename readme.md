@@ -118,7 +118,7 @@ Response :
 
 
 
-Please note that,for securoty reasons,the access token for this has been emailed to the professor. This would only work if the access token 
+Please note that,for security reasons,the access token for this has been emailed to the professor. This would only work if the access token 
 is specified in the function GenerateRequestId (GenerateRequestId.Go file ).
 go to the function and 
 change the value of access token 
