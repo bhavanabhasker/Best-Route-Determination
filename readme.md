@@ -1,6 +1,12 @@
 How to execute ?
 
 
+For Travelling Salesman Problem algorithm to determine the best routes . Please refer to the repository : 
+https://github.com/bhavanabhasker/cmpe273-assignment3_TSP
+
+
+This implementation uses the minimum walk algorithm to calculate the best routes 
+
 
 Setup : 
 
