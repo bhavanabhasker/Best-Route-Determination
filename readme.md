@@ -1,88 +1,56 @@
-How to execute ?
+#Best Route Determination 
 
+##Objective 
+Given source and destination, determine the shortest and best possible route using minimum walk algoritm 
+Uber api will be used to determine the costs for the travel and eta determination. 
 
-For Travelling Salesman Problem algorithm to determine the best routes . Please refer to the repository : 
-https://github.com/bhavanabhasker/cmpe273-assignment3_TSP
+##How to execute ?
 
+###Setup : 
 
-This implementation uses the minimum walk algorithm to calculate the best routes 
+1. Download all the files from github
 
+###Post Installation:
 
-Setup : 
+2. Run the following dependencies,
 
-
-Download all the files from github
-
-
-
-Post Installation:
-
-
-
-Run the following dependencies,
-
+<pre>
 go get gopkg.in/mgo.v2
-
-How to execute?
-
-
 go run *.go
+</pre>
 
+##Application Framework and Notes 
 
+1. The locations for this program is taken from the locations db on mongo lab.
 
-Pre req: The locations for this program is taken from the locations db on mongo lab.
-
-
-
-You can run the program with the below sample locations :
-
-
+2. You can run the program with the below sample locations :
+<pre>
 Location ID
 12348
 12349
 12345
 12346
 12347
+</pre>
 
 
-
-To generate the new locations ,
-
-
-Follow below,
-
-
+### For creating new location 
+<pre>
 go get github.com/bhavanabhasker/cmpe273-assignment2/rest
+POST http://localhost:8080/locations
+Request : { "name" : "John Smith", "address" : "123 Main St", "city" : "San Francisco", "state" : "CA", "zip" : "94113" }
+Response : The location ID is returned 
+</pre>
 
-
-
-and create new locations using POST http://localhost:8080/locations
-EG: Request : { "name" : "John Smith", "address" : "123 Main St", "city" : "San Francisco", "state" : "CA", "zip" : "94113" }
-
-
-
-take the location id in the response
-
-
-
-Execution :
-
-
-The following endpoints are implemented
-
+###Endpoints Information 
 
 1. Post /trips to plan a trip 
-
-
-
+<pre>
 Request format : 
 {
     "starting_from_location_id": "12345",
     "location_ids" : [ "12346", "12347", "12348", "12349" ] 
 }
-
-
-
 Response :
 {
   "id": 1126,
@@ -98,10 +66,11 @@ Response :
   "total_uber_duration": 6203,
   "total_distance": 79.13
 }
-
+</pre>
 
 
 2. GET trip/{trip_id}
+<pre>
 Response :
 {
   "id": 1126,
@@ -117,13 +86,11 @@ Response :
   "total_uber_duration": 6203,
   "total_distance": 79.13
 }
-
+</pre>
 
 
 3. PUT  /trips/{trip_id}/request
-
-
-
+<pre>
 Response : 
 {
   "id": 1126,
@@ -141,10 +108,8 @@ Response :
   "total_distance": 79.13,
   "uber_wait_time_eta": 15
 }
+</pre>
 
-
-
-Please note that the current next_destination_location_id is 12347. Subsequent calls would change the next destination and eventually return back to the origin.
 
  
 
